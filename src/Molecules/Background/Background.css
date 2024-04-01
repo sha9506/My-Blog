@@ -1,0 +1,18 @@
+.background-common
+{
+    width: 100%;
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.background-login
+{
+    background-image: url('../../Assets/Login.png');
+}
+
+.background-add
+{
+    background-image: url('../../Assets/AddBLog.jpg');
+}
