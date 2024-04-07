@@ -1,23 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Background from "../Molecules/Background/Background";
 import Users from "../DummyData/Users";
 
 
-const Login=()=>
+const Login=({setPageNumber})=>
 {
-    const[message, setMessage]=useState("");
     const[password, setPassword]=useState();
-    const[username, setUsername]=useState();
+    const[username, setUsername]=useState("");
+    const[message, setMessage]=useState("");
+
+    useEffect(()=>
+    {
+        const savedValue = localStorage.getItem("user");
+        setUsername(savedValue);
+    },[])
 
     const handleLogin=()=>
     {
-       for(let i=0; i<Users.length; i++)
-       {
-         if(Users[i].username===username && Users[i].password===password)
-         {
-            setMessage("done");
-         }
-       }
+        for(let i=0; i<Users.length; i++)
+        {
+            if(!username)
+                {
+                    setMessage("Enter The Credentials");
+                }
+            if(Users[i].username===username && Users[i].password===password)
+                {
+                    localStorage.setItem("user", username);
+                    setPageNumber(1);
+                    setMessage("")
+                }
+        }
     }
 
     return(<Background variant={'login'}>
@@ -33,7 +45,7 @@ const Login=()=>
                 <div className="login-note">Don’t have an account?</div>
                 <div className="signup-color">Sign up</div>
             </div>
-            <div>{message}</div>
+            <div className="message">{message}</div>
         </div>
     </Background>)
 }

@@ -75,3 +75,74 @@
   color:black;
   margin-top: 20px;
 }
+.message
+{
+  font-size: 20px;
+  color: black;
+}
+
+/* Dashboard  */
+
+.nav-bar
+{
+  background-color: #E46F80;
+  height: 50px;
+  display: flex;
+  flex-direction:row;
+  padding: 20px;
+  align-items: center;
+}
+.username
+{
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+}
+.search-box
+{
+  display: flex;
+  flex-direction: row;
+  margin-left: 500px;
+  height: 30px;
+  width: 700px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+.search-input
+{
+  width: 95%;
+  border: 1px white;
+  font-size:18px ;
+  font-weight: bold;
+}
+.search-input:focus
+{
+  outline: none;
+}
+.search-icon
+{
+  width: 27px;
+  height: 24px;
+  margin-top: 5px;
+}
+
+.anime-list
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+.anime-title
+{
+  font-size: 50px;
+  font-weight: bolder;
+}
+.anime-content
+{
+  font-size: 20px;
+  font-weight: bold;
+  word-wrap: break-word;
+}
