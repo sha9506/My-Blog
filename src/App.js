@@ -5,14 +5,15 @@ import Login from './Pages/Login';
 
 const App=()=>
 {
-  const[pageNumber, setPageNumber]= useState(0);
+  const[pageNumber, setPageNumber]= useState(1);
+  const[username, setUsername]=useState("");
 
   return(<div>
    { 
-      pageNumber===0? <Login setPageNumber={setPageNumber}/> : null
+      pageNumber===0? <Login setPageNumber={setPageNumber} username={username} setUsername={setUsername}/> : null
    }
    {
-      pageNumber===1? <Dashboard/> : null
+      pageNumber===1? <Dashboard setPageNumber={setPageNumber} username={username}/> : null
    }
 
     

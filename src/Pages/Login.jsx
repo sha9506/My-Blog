@@ -3,10 +3,10 @@ import Background from "../Molecules/Background/Background";
 import Users from "../DummyData/Users";
 
 
-const Login=({setPageNumber})=>
+const Login=({setPageNumber , username , setUsername})=>
 {
     const[password, setPassword]=useState();
-    const[username, setUsername]=useState("");
+   
     const[message, setMessage]=useState("");
 
     useEffect(()=>
@@ -25,9 +25,10 @@ const Login=({setPageNumber})=>
                 }
             if(Users[i].username===username && Users[i].password===password)
                 {
+                    setMessage("");
                     localStorage.setItem("user", username);
                     setPageNumber(1);
-                    setMessage("")
+                    
                 }
         }
     }
