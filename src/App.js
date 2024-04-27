@@ -2,22 +2,20 @@ import React, { useState } from 'react';
 import './App.css';
 import Dashboard from './Pages/Dashboard';
 import Login from './Pages/Login';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App=()=>
 {
-  const[pageNumber, setPageNumber]= useState(1);
   const[username, setUsername]=useState("");
 
-  return(<div>
-   { 
-      pageNumber===0? <Login setPageNumber={setPageNumber} username={username} setUsername={setUsername}/> : null
-   }
-   {
-      pageNumber===1? <Dashboard setPageNumber={setPageNumber} username={username}/> : null
-   }
+  return(<BrowserRouter>
+    <Routes>
+        <Route path='/login' exact element={<Login username={username} setUsername={setUsername}/>} />
+        <Route path='/dashboard' exact element={<Dashboard username={username}/>}/>
+    </Routes>
+  
 
-    
-    </div>)
+  </BrowserRouter>)
 }
 
 export default App;

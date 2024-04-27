@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import Background from "../Molecules/Background/Background";
 import SearchIcon from '../Assets/search.png';
 import Anime from "../DummyData/anime";
 import Tags from  '../Assets/tags.png';
+import { useNavigate } from "react-router-dom";
 
 
-const Dashboard=({username, setPageNumber})=>
+const Dashboard=({username})=>
 {
 
     const[animeList, setAnimeList]=useState([]);
     const[search, setSearch]=useState("");
+    const navigate = useNavigate();
+    
+    useEffect(()=>
+    {
+        if(!username)
+        {
+            navigate('/login');
+        }
+    },[])
 
     const handleSearch=()=>
     {
@@ -25,9 +35,14 @@ const Dashboard=({username, setPageNumber})=>
     
     const handleAdd=()=>
     {
-        setPageNumber(2);
+        navigate('/add-blog');
     }
 
+    const handleLogOut=()=>
+    {
+        localStorage.removeItem("user");
+        navigate('/login');
+    }
 
     return(<Background variant={'dashboard'}>
         <div className="nav-bar">
@@ -42,7 +57,7 @@ const Dashboard=({username, setPageNumber})=>
                 <div className="nav-bar-item">Home</div>
                 <div className="nav-bar-item" onClick={handleAdd}>Add Blog</div>
                 <div className="nav-bar-item">Profile</div>
-                <div className="nav-bar-item">Contact us</div>
+                <div className="nav-bar-item" onClick={handleLogOut}>Log out</div>
         </div>
         <img src={Tags} alt="tags" className="tags" />
        

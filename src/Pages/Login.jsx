@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Background from "../Molecules/Background/Background";
 import Users from "../DummyData/Users";
+import { useNavigate } from "react-router-dom";
 
 
-const Login=({setPageNumber , username , setUsername})=>
+const Login=({  username , setUsername})=>
 {
     const[password, setPassword]=useState();
    
     const[message, setMessage]=useState("");
+    const navigate = useNavigate();
 
     useEffect(()=>
     {
         const savedValue = localStorage.getItem("user");
-        setUsername(savedValue);
+        
+        if(savedValue)
+        {
+            setUsername(savedValue);
+            navigate('/dashboard');
+        }
     },[])
 
     const handleLogin=()=>
@@ -27,7 +34,7 @@ const Login=({setPageNumber , username , setUsername})=>
                 {
                     setMessage("");
                     localStorage.setItem("user", username);
-                    setPageNumber(1);
+                    navigate('/dashboard');
                     
                 }
         }
